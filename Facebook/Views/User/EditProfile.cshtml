@@ -1,0 +1,99 @@
+﻿@model Facebook.Models.ViewModels.EditViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@await Html.PartialAsync("_Header", Model._Header);
+
+@await Html.PartialAsync("_ProfileThumb", Model._ProfileThumb);
+
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="card boxesCards">
+                    <div class="card-body d-flex flex-column">
+                        <h4 class="card-title mb-4">Information</h4>
+                        <form method="post" asp-controller="User" asp-action="UpdateUser" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="User.Id" />
+                            <input hidden asp-for="User.ProfileImage" value="@Model.User.ProfileImage" />
+                            <input hidden asp-for="User.ProfileCover" value="@Model.User.ProfileCover" />
+
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3 detailsDiv">
+                                    <label asp-for="User.FirstName" for="FirstName" class="form-label"></label>
+                                    <input asp-for="User.FirstName" class="form-control" id="FirstName">
+                                    <span asp-validation-for="User.FirstName" class="form-text text-danger"></span>
+                                </div>
+                                <div class="col-md-6 mb-3 detailsDiv">
+                                    <label asp-for="User.SecondName" for="SecondName" class="form-label"></label>
+                                    <input asp-for="User.SecondName" class="form-control" id="SecondName">
+                                    <span asp-validation-for="User.SecondName" class="form-text text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3 detailsDiv">
+                                    <label asp-for="User.Email" for="Email" class="form-label"></label>
+                                    <input asp-for="User.Email" class="form-control" id="Email">
+                                    <span asp-validation-for="User.Email" class="form-text text-danger"></span>
+                                </div>
+                                <div class="col-md-6 mb-3 detailsDiv">
+                                    <label asp-for="User.Phone" for="Phone" class="form-label"></label>
+                                    <input asp-for="User.Phone" class="form-control" id="Phone">
+                                    <span asp-validation-for="User.Phone" class="form-text text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3 detailsDiv">
+                                    <label asp-for="User.Password" for="Password" class="form-label"></label>
+                                    <input asp-for="User.Password" value="@Model.User.Password" class="form-control" id="Password">
+                                    <span asp-validation-for="User.Password" class="form-text text-danger"></span>
+                                </div>
+                                <div class="col-md-6 mb-3 detailsDiv">
+                                    <label asp-for="User.ConfirmPassword" for="ConfirmPassword" class="form-label"></label>
+                                    <input asp-for="User.ConfirmPassword" value="@Model.User.Password" class="form-control" id="ConfirmPassword">
+                                    <span asp-validation-for="User.ConfirmPassword" class="form-text text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3 detailsDiv">
+                                    <label asp-for="User.Country" for="Country" class="form-label"></label>
+                                    <input asp-for="User.Country" class="form-control" id="Country">
+                                    <span asp-validation-for="User.Country" class="form-text text-danger"></span>
+                                </div>
+                                <div class="col-md-6 mb-3 detailsDiv">
+                                    <label asp-for="User.City" for="City" class="form-label"></label>
+                                    <input asp-for="User.City" class="form-control" id="City">
+                                    <span asp-validation-for="User.City" class="form-text text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3 detailsDiv">
+                                    <label asp-for="User.ProfileImage" for="ProfileImage" class="form-label"></label>
+                                    <input type="file" name="profImg" accept=".png,.jpg,.jpeg" asp-for="User.ProfileImage" class="form-control" id="ProfileImage">
+                                    <span asp-validation-for="User.ProfileImage" class="form-text text-danger"></span>
+                                </div>
+                                <div class="col-md-6 mb-3 detailsDiv">
+                                    <label asp-for="User.ProfileCover" for="ProfileCover" class="form-label"></label>
+                                    <input type="file" name="profCover" accept=".png,.jpg,.jpeg" asp-for="User.ProfileCover" class="form-control" id="ProfileCover">
+                                    <span asp-validation-for="User.ProfileCover" class="form-text text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 text-center">
+                                    <button type="submit" class="cardBtnIntro cardBtnIntroFrom">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@

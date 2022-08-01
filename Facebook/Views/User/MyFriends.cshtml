@@ -1,0 +1,12 @@
+﻿@model Facebook.Models.ViewModels.UserFriendsViewModel
+@{
+    ViewData["Title"] = "MyFriends";
+}
+
+@await Html.PartialAsync("_Header", Model._Header);
+
+@await Html.PartialAsync("_ProfileThumb", Model._ProfileThumb);
+
+@await Html.PartialAsync("_MyFriends", Model);
+
+

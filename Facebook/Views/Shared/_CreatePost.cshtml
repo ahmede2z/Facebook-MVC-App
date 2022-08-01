@@ -1,0 +1,51 @@
+﻿@model Facebook.Models.ViewModels.UserProfileViewModel
+
+
+<!--Posts section-->
+<!--Create Post-->
+<div class="card boxesCards px-0 mx-0">
+    <form method="post" asp-controller="Posts" asp-action="CreatePost" enctype="multipart/form-data">
+        <input hidden asp-for="Post.UserId" value="@Model.User.Id" />
+        <div class="card-body">
+            <div id="inputDiv" class="inputDiv">
+                <div class="row">
+                    <!--User Icon-->
+                    <div class="col-2">
+                        <img width="50px" height="50px" src="@Model.User.ProfileImage" class="profilePic" alt="">
+                    </div>
+
+                    <div class="col-8 mt-1">
+                        <!--Post Text-->
+                        <input type="text" asp-for="Post.PostContent" class="form-control w-100 formInput" placeholder="What's on your mind?" aria-label="Text input with dropdown button">
+                        <!--Post Status-->
+                        <div class="my-2">
+                            <select asp-for="Post.PostStatus" class="fa bg-white text-primary" style="font-size:0.8em;">
+                                <option value="1" class="fa-solid fa-earth-americas dropdown-item">&#xf57d; <span>Public</span></option>
+                                <option value="2" class="fa-solid fa-user-group dropdown-item">&#xf500; <span>Friends</span></option>
+                                <option value="3" class="fa-solid fa-lock dropdown-item">&#xf023; <span>Only Me</span></option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--Uplode photo-->
+                    <div class="col-2">
+                        <span class="btn mt-1" id="btnShow" onclick="showPostDiv()">
+                            <span class="imgUpload"><i class="fa-solid fa-image"></i></span>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+            <!--Photo Body-->
+            <div id="postBox" class="mt-4 postBoxStyle">
+                <input asp-for="Post.PostImage" name="postImg" type="file" accept="image/*" id="imgInput" style="display: none;">
+                <label for="imgInput" style="cursor: pointer;"><img for="imgInput" src="img/default_image_011.png" class=" img-fluid" id="output" alt="UploadImg"></label>
+            </div>
+            <!--Post submit-->
+            <div class="mt-2">
+                <button type="submit" class="w-100 btn btn-primary">
+                    <span>Post</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

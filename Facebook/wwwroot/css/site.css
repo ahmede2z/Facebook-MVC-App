@@ -1,0 +1,778 @@
+/* Default style */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/* END of Default style */
+
+/* Hazem style */
+
+/* Common styles */
+html, body {
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+}
+
+/* Login View */
+.login-in {
+    background-color: #f0f2f5;
+    min-height: 720px;
+    padding-bottom: 112px;
+    padding-top: 72px;
+}
+
+    .login-in .Info .face-info p {
+        font-size: 28px;
+        font-weight: normal;
+        line-height: 32px;
+    }
+
+    .login-in .login-form form {
+        background-color: #fff;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+        box-sizing: border-box;
+        margin: 40px 0 0;
+        padding: 20px 0 28px;
+        padding-top: 20px;
+        padding-bottom: 28px;
+        width: 396px;
+    }
+
+        .login-in .login-form form input {
+            font-size: 17px;
+            padding: 14px 16px;
+            line-height: 16px;
+            color: #1d2129;
+        }
+
+            .login-in .login-form form input::placeholder {
+                color: #c2c4c9;
+            }
+
+    .login-in .login-form .log-btn {
+        background-color: #1877f2;
+        border: none;
+        border-radius: 6px;
+        font-size: 20px;
+        line-height: 48px;
+        padding: 0 16px;
+        text-align: center;
+        font-weight: bold;
+        width: 100%;
+        color: #fff;
+    }
+
+    .login-in .login-form .new-acc-btn {
+        background-color: #42b72a;
+        border: none;
+        border-radius: 6px;
+        font-size: 17px;
+        line-height: 48px;
+        padding: 0 16px;
+        text-align: center;
+        font-weight: bold;
+        margin: 0 auto;
+        color: #fff;
+    }
+
+/* Register View */
+.Register-in {
+    background-color: #f0f2f5;
+    min-height: 720px;
+    padding-bottom: 112px;
+}
+
+    .Register-in .register-form {
+        background-color: #fff;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+        box-sizing: border-box;
+        margin: 10px 0;
+        padding: 10px 0 0;
+        width: 430px;
+    }
+
+        .Register-in .register-form .Info .title h3 {
+            font-size: 25px;
+            line-height: 32px;
+            font-weight: 600;
+            text-align: center;
+            color: #1c1e21;
+            margin-bottom: 0;
+        }
+
+        .Register-in .register-form .Info .head p {
+            font-size: 15px;
+            line-height: 24px;
+            text-align: center;
+            margin-bottom: 0;
+            color: #606770;
+        }
+
+        .Register-in .register-form form input {
+            font-size: 17px;
+            padding: 10px 16px;
+            line-height: 16px;
+            color: #1d2129;
+        }
+
+            .Register-in .register-form form input::placeholder {
+                color: #c2c4c9;
+            }
+
+        .Register-in .register-form .sign-btn {
+            background-color: #42b72a;
+            border: none;
+            border-radius: 6px;
+            font-size: 17px;
+            line-height: 36px;
+            padding: 0 16px;
+            text-align: center;
+            font-weight: bold;
+            margin: 0 auto;
+            color: #fff;
+        }
+
+/* END of Hazem style */
+
+/* Front-end Team style */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #eeeeee;
+}
+
+/* .darkmode .card{
+    background-color: #282828 !important;
+}
+.darkmode nav{
+    background-color: #282828 !important; 
+}
+.darkmode section {
+    background-color: #181818 !important;
+}
+.darkmode ,.darkmode a,.darkmode button{
+    color: white !important;
+}
+.darkmode .cardBtnIntro{
+    color: black!important;
+}
+.darkmode .dropdown button{
+    color:black !important;
+}
+.darkmode .profileSection{
+    box-shadow: 2px 2px 2px #ffffff !important;
+}
+.darkmode .Notification-container ,.darkmode .Search-container, .darkmode .Logout-container{
+    background-color: #282828 !important;
+}
+.darkmode .lastContent .lastContentLinks a{
+    color: black !important;
+}
+.darkmode .bgComments{
+    background-color: #202020 !important;
+}
+.darkmode .profileSection{
+    position: relative;
+    z-index: 10;
+    box-shadow: 2px 2px 4px rgb(7, 7, 7) !important;
+} */
+
+
+
+
+
+.btn {
+    box-shadow: none !important;
+    outline: 0 !important;
+}
+
+.visibility {
+    font-size: 13px;
+    color: #707070;
+}
+
+.boxesCards {
+    margin: 10px 0px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 1px 1px 3px #5e5e5e;
+}
+
+.headBtns {
+    margin-top: 12px;
+}
+
+    .headBtns:hover {
+        background-color: #a7a6a6;
+    }
+
+.headBtnsPosts {
+    background-color: rgb(4, 109, 4);
+    color: white;
+}
+
+    .headBtnsPosts:hover {
+        background-color: rgb(8, 122, 27);
+        color: white;
+    }
+
+.headBtnsFriends {
+    background-color: rgb(4, 109, 4);
+    color: white;
+}
+
+    .headBtnsFriends:hover {
+        background-color: rgb(8, 122, 27);
+        color: white;
+    }
+/*intro card*/
+.cardBtnIntro {
+    margin: 7px 0px;
+    border-radius: 10px;
+    border: 1px solid #a7a6a6;
+    box-shadow: 2px 2px 3px;
+    padding: 10px 0px;
+    transition: .3s all ease-in-out;
+}
+
+.cardBtnIntroFrom {
+    padding: 10px 50px;
+}
+
+.cardBtnIntro:hover {
+    background-color: #9e9c9c;
+}
+
+.detailsDiv i {
+    color: #6b6b6b;
+    margin-right: 5px;
+}
+
+.detailsDiv label {
+    color: #6b6b6b;
+}
+
+.detailsDiv span {
+    margin: 5px 0px;
+}
+/* .textAreaAdj{
+    overflow-y: auto;
+    resize: none;
+} */
+/* .bio{
+    display: none;
+}
+.btnIntro{
+    display: block;
+} */
+/* .btnBio2{
+    display: none;
+}
+.detailsLink{
+    text-decoration: none;
+    font-size:18px;
+    color: #a8332f;
+}
+.formdiv{
+    display: block;
+}
+.details{
+    display: block;
+} */
+
+
+
+/*add post*/
+.postBoxStyle {
+    color: #ffffff;
+    padding: 20px 0px;
+    display: none;
+}
+
+.btnVisible {
+    background-color: #9e9c9c;
+    border: 1px solid black;
+    border-radius: 15px;
+    font-size: 10px;
+}
+
+.formInput {
+    border-radius: 10px;
+}
+
+.dropBtn {
+    color: #0870e3;
+    border: 1px solid #dad9d9;
+    border-radius: 10px;
+    padding: 3px 8px;
+    transition: 0.3s all ease-in-out;
+    font-size: 12px;
+}
+
+    .dropBtn:hover {
+        color: black;
+        background-color: #9e9c9c;
+    }
+
+.dropdown-item {
+    font-size: 15px;
+}
+
+
+.imgUpload i {
+    color: #0870e3;
+    font-size: 20px;
+    transition: .3s all ease-in-out;
+}
+
+#btnShow:hover .imgUpload i {
+    color: black;
+    transform: scale(1.2, 1.2);
+}
+/*posts*/
+.nameLink {
+    text-decoration: none;
+    color: black;
+}
+
+.profilePic {
+    border-radius: 50%;
+}
+
+.nameLink:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+.activeLike {
+    color: #0870e3 !important;
+}
+
+.activeDislike {
+    color: #c43b36 !important;
+}
+
+.likeG {
+    color: #807e7e;
+}
+
+.dislikeG {
+    color: #807e7e;
+}
+
+.like {
+    color: #0870e3;
+}
+
+.dislike {
+    color: #c43b36;
+}
+
+.comment {
+    color: #807e7e;
+}
+
+.btnwidth {
+    width: 33.33%;
+}
+
+.commentInput {
+    border-radius: 200px !important;
+}
+
+.bgComments {
+    background-color: #ebebeb;
+    border-radius: 24px;
+    padding-top: 10px;
+}
+
+
+/*Friends page*/
+.Friends a {
+    text-decoration: none;
+    color: black;
+}
+
+.Friends img {
+    border-radius: 6px;
+}
+
+/*overlayed img*/
+.parentOverlay {
+    background: rgba(128,128,128,0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1500;
+    display: none;
+}
+
+.childOverlay {
+    position: relative;
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+}
+
+    .childOverlay img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 7px;
+    }
+
+    .childOverlay i {
+        position: absolute;
+        right: 50px;
+        top: 100px;
+        font-size: 35px;
+        color: #0870e3;
+        cursor: pointer;
+    }
+
+
+
+
+/*ram*/
+.navColor {
+    background-color: white;
+}
+
+.profileSection {
+    background-color: #ffffff;
+    box-shadow: 2px 2px 2px #aaaaaa;
+    padding-top: 80px;
+}
+
+.coverPhotoS {
+    width: 60%;
+    margin: auto;
+}
+
+.coverPhotoGredient {
+    position: relative;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+    .coverPhotoGredient::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.4));
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 1px 1px 5px;
+    }
+
+.profilePicTrans {
+    position: relative;
+    transform: translateY(-30%);
+}
+
+.ProfPicName {
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: 600px;
+}
+
+@media screen and (max-width:800px) {
+    .profilePicTrans .ProfPicName {
+        display: block;
+    }
+
+    .profileNameImage {
+        text-align: center;
+    }
+}
+
+
+.icons img {
+    border-radius: 50%;
+}
+
+.header .facebook-icon {
+    margin-right: 1rem;
+    font-size: 2.6rem;
+    cursor: pointer;
+    color: rgb(18, 154, 247);
+}
+
+.header .inputBox {
+    background: rgb(240, 242, 245);
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+}
+
+
+    .header .inputBox span {
+        color: grey;
+        font-size: 1rem;
+        padding-left: 1rem;
+        cursor: pointer;
+    }
+
+    .header .inputBox input {
+        outline: none;
+        border: 0;
+        background: none;
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+
+
+.header .SmallUser img {
+    width: 2rem;
+}
+
+.header .icons {
+    display: flex;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 2rem;
+}
+
+.header .fa-solid {
+    font-size: 1.5rem;
+}
+
+    .header .fa-solid:hover {
+        color: rgb(18, 154, 247);
+    }
+
+
+.header .Notification-container {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    max-height: 75vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 25rem;
+    padding: 0 1.5rem;
+    background: white;
+}
+
+    .header .Notification-container.active {
+        right: 1%;
+    }
+
+.header .Notification-container2 {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    height: 35rem;
+    width: 25rem;
+    padding: 0 1.5rem;
+    background: white;
+}
+
+    .header .Notification-container2.active {
+        right: 1%;
+    }
+
+.header .Notification-container .h1 {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.header .Notification-container img {
+    width: 4rem;
+}
+
+.header .Notification-container .singel-notfication {
+    position: relative;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+    .header .Notification-container .singel-notfication:hover {
+        background: #e4e6eb;
+    }
+
+    .header .Notification-container .singel-notfication .content .time {
+        font-size: 0.8rem;
+        color: blue;
+    }
+
+    .header .Notification-container .singel-notfication .content span {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+header .Notification-container .singel-notfication .content a {
+    text-decoration: none;
+    color: black;
+}
+
+.header .Logout-container {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    width: 25rem;
+    padding: 0 1.5rem;
+    background: white;
+}
+
+    .header .Logout-container.active {
+        right: 0.5%;
+    }
+
+    .header .Logout-container img {
+        width: 5rem;
+    }
+
+    .header .Logout-container .small-info {
+        display: flex;
+        align-items: center;
+        border-bottom: 0.1rem solid rgb(107, 106, 106);
+        margin-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .header .Logout-container p {
+        margin-left: 1rem;
+        font-weight: 600;
+    }
+
+    .header .Logout-container .small-element {
+        display: flex;
+        margin-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+        .header .Logout-container .small-element a {
+            text-decoration: none;
+            margin-left: 1rem;
+            font-weight: 600;
+            color: black;
+            transition: 0.2s all ease-in-out;
+        }
+
+            .header .Logout-container .small-element a:hover {
+                color: #0d6efd;
+            }
+
+
+.header .Search-container {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    width: 20rem;
+    max-height: 60vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 0 1.5rem;
+    background: white;
+}
+
+    .header .Search-container.active {
+        left: 0%;
+    }
+
+    .header .Search-container .search-element {
+        position: relative;
+        margin: 2rem 0;
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+        .header .Search-container .search-element:hover {
+            background: #e4e6eb;
+        }
+
+        .header .Search-container .search-element img {
+            width: 4rem;
+        }
+
+        .header .Search-container .search-element a {
+            text-decoration: none;
+            font-weight: 600;
+            color: black;
+        }
+
+
+
+
+/* END of Front-end Team style */
+
+
+
+/*overlayed img*/
+.LikesParentOverlay {
+    background: rgba(128,128,128,0.7);
+    position: fixed;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1500;
+    display: none;
+}
+
+.likeChildOverlay {
+    position: relative;
+    background-color: white;
+    min-height: 60vh;
+    max-height: 70vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 400px;
+    padding: 30px 15px;
+    
+    flex-direction:column;
+}
+
+
+.likeChildOverlayColse {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 35px;
+    color: #0870e3;
+    cursor: pointer;
+}
+
+    .likeChildOverlay h4 {
+        font-size: 30px;
+        color: black;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }

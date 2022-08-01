@@ -1,0 +1,80 @@
+﻿@model Facebook.Models.ViewModels.UserProfileViewModel
+@{
+    ViewData["Title"] = "EditPost";
+}
+
+@await Html.PartialAsync("_Header", Model._Header);
+
+@await Html.PartialAsync("_ProfileThumb", Model._ProfileThumb);
+
+<section>
+    <div class="container">
+        <div class="row">
+            <!--user Data-->
+            <div class="col-lg-5 offset-lg-1">
+                <div class="card boxesCards">
+                    <div class="card-body d-flex flex-column">
+                        <h4 class="card-title">Intro</h4>
+                        <div class="d-flex flex-column detailsDiv">
+                            <span><i class="fa-solid fa-user"></i>@Model.User.FirstName @Model.User.SecondName</span>
+                            <span><i class="fa-solid fa-at"></i> @Model.User.Email</span>
+                            @if (Model.User.City != null) {
+                                <span><i class="fa-solid fa-location-pin"></i> @Model.User.City</span>
+                            }
+                            @if (Model.User.Country != null) {
+                                <span><i class="fa-solid fa-earth-americas"></i> @Model.User.Country </span>
+                            }
+                            <span><i class="fa-solid fa-phone"></i> @Model.User.Phone</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Posts-->
+            <div class="col-lg-5 ">
+                <!--Cteate Post-->
+                <div class="card boxesCards px-0 mx-0">
+                    <form method="post" asp-controller="Posts" asp-action="EditThePost">
+                        <input hidden asp-for="Post.UserId" value="@Model.User.Id" />
+                        <input hidden asp-for="Post.PostId" value="@Model.Post.PostId" />
+                        <input hidden asp-for="Post.NumOfComment" value="@Model.Post.NumOfComment" />
+                        <input hidden asp-for="Post.NumOfDisLike" value="@Model.Post.NumOfDisLike" />
+                        <input hidden asp-for="Post.NumOfLike" value="@Model.Post.NumOfLike" />
+                        <input hidden asp-for="Post.PostImage" value="@Model.Post.PostImage" />
+
+                        <div class="card-body">
+                            <div id="inputDiv" class="inputDiv">
+                                <div class="row">
+                                    <!--User Icon-->
+                                    <div class="col-2">
+                                        <img width="50px" height="50px" src="@Model.User.ProfileImage" class="profilePic" alt="">
+                                    </div>
+                                    <div class="col-8 mt-1">
+                                        <!--Post Text-->
+                                        <input type="text" asp-for="Post.PostContent" value="@Model.Post.PostContent" class="form-control w-100 formInput" placeholder="What's on your mind?" aria-label="Text input with dropdown button">
+                                        <!--Post Status-->
+                                        <div class="my-2">
+                                            <select asp-for="Post.PostStatus" class="fa bg-white text-primary" style="font-size:0.8em;">
+                                                <option value="1" class="fa-solid fa-earth-americas dropdown-item">&#xf57d; <span>Public</span></option>
+                                                <option value="2" class="fa-solid fa-user-group dropdown-item">&#xf500; <span>Friends</span></option>
+                                                <option value="3" class="fa-solid fa-lock dropdown-item">&#xf023; <span>Only Me</span></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Post submit-->
+                            <div class="mt-2">
+                                <button type="submit" class="w-100 btn btn-primary">
+                                    <span>Edit</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

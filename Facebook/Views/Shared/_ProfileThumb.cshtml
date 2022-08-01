@@ -1,0 +1,49 @@
+﻿@model Facebook.Models.ViewModels._ProfileThumbModel
+<section class="profileSection">
+    <div class="coverPhotoS pb-2">
+        <div class="row">
+            <label for="coverPhoto" id="coverGred" class="p-0 coverPhotoGredient"  style="cursor: pointer; max-height:420px;overflow:hidden;">
+                <img src="@Model.user.ProfileCover" class=" card-img-top w-100" alt="" id="cover">
+            </label>
+        </div>
+        <div class="row mt-2">
+            <div class="col-lg-7 profileNameImage">
+                <label style="cursor: pointer;" for="profilePic" class="ms-lg-3 profilePicTrans ">
+                    <img style="border-radius: 50%; " src="@Model.user.ProfileImage" width="190px" height="190px" id="profile" alt="">
+                    <span class="ProfPicName">@Model.user.FirstName @Model.user.SecondName</span>
+                </label>
+            </div>
+
+            <div class="col-lg-5 text-md-end text-center mt-lg-3">
+                @{
+                    if (Model.ThumbBtnVis) {
+                                <a asp-action="EditProfile" asp-controller="User" class="btn btn-secondary mb-1"><i class="fa-solid fa-pen"></i> Edit profile</a>
+                    } else {
+                        int flag = 0;
+                        foreach (var friend in (List<UserFriend>)Model.Friends) {
+                            if (friend.FriendId == Model.user.Id && friend.UserId == Model.CurUser.Id && friend.FriendRequestStatus == 1) {
+                                                <p class="btn btn-primary mb-1"><i class="fa-solid fa-check"></i> Friends</p>
+                                                <a asp-controller="User" asp-action="RemoveFriend" asp-route-userId="@Model.CurUser.Id" asp-route-friendId="@Model.user.Id" class="btn btn-secondary mb-1"> Remove Friend</a>
+                                flag = 1;
+                            } else if (friend.UserId == Model.CurUser.Id && friend.FriendId == Model.user.Id && friend.FriendRequestStatus == 0) {
+                                                <a asp-controller="User" asp-action="CancelRequest" asp-route-userId="@Model.CurUser.Id" asp-route-friendId="@Model.user.Id" class="btn btn-primary mb-1"> Cancel Request</a>
+
+                                flag = 1;
+
+                            } else if (friend.FriendId == Model.CurUser.Id && friend.User.Id == Model.user.Id && friend.FriendRequestStatus == 0) {
+                                                <a asp-controller="User" asp-action="AddFriend" asp-route-userId="@Model.CurUser.Id" asp-route-friendId="@Model.user.Id" class="btn btn-primary mb-1"> Confirm</a>
+                                                <a asp-controller="User" asp-action="Decline" asp-route-userId="@Model.user.Id" asp-route-friendId="@Model.CurUser.Id" class="btn btn-secondary mb-1"> Decline</a>
+
+
+                                flag = 1;
+                            }
+                        }
+                        if (flag == 0) {
+                                        <a asp-controller="User" asp-action="SendRequest" asp-route-userId="@Model.CurUser.Id" asp-route-friendId="@Model.user.Id" class="btn btn-primary mb-1"><i class="fa-solid fa-plus"></i> Add Friend</a>
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>

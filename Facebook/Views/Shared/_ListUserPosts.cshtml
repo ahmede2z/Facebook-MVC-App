@@ -1,0 +1,177 @@
+﻿@using System.Collections
+@model Facebook.Models.ViewModels.UserProfileViewModel
+
+<!--Posts-->
+<div class="row">
+    @foreach (var post in (List<Post>)@Model.PostModel.Posts) {
+        var flag = 0;
+        @*<!--Post-->*@
+        <div class="card boxesCards px-0 mx-0">
+            @*<!--Post Header-->*@
+            <div class="card-body">
+                <div class="row ">
+                    <div class="col-2">
+                        <img width="50px" height="50px" src="@Model.User.ProfileImage" class="profilePic" alt="">
+                    </div>
+                    <div class="col-10 row">
+                        <div class="col-12 d-flex justify-content-between">
+                            <span class="nameLink">@Model.User.FirstName @Model.User.SecondName</span>
+                            @if (Model.User.Id == Model.CurUser.Id) {
+                                <div class="align-content-end text-end">
+                                    <a asp-action="EditPost" asp-controller="Posts" asp-route-postId="@post.PostId" class="btn  imgUpload">
+                                        <i class="fa-solid fas fa-cog"></i>
+                                    </a>
+                                    <a asp-action="DeletePost" asp-controller="Posts" asp-route-postId="@post.PostId" class="btn  imgUpload ">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                        <p>
+                            @post.PostDate
+                            @{
+                                switch (post.PostStatus) {
+                                    case 1:
+                                        <i title="Public" class="visibility ms-3 fa-solid fa-earth-americas"></i>
+                                        break;
+                                    case 2:
+                                        <i title="Friends" class="visibility ms-3 fa-solid fa-user-group"></i>
+                                        break;
+                                    case 3:
+                                        <i title="Only Me" class="visibility ms-3 fa-solid fa-lock"></i>
+                                        break;
+                                    default:
+                                        <i title="Public" class="visibility ms-3 fa-solid fa-earth-americas"></i>
+                                        break;
+                                }
+                            }
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            @*<!--Post Body-->*@
+            <p class="ms-3">@post.PostContent</p>
+            <img class="img-fluid w-100 ImgUrl" src="@post.PostImage" onclick="showOverlay()" alt="" style="cursor:pointer;">
+            @*<!--Post Footer-->
+                <!--display likes-->*@
+            <div class="ms-3 my-2">
+                <label style="cursor:pointer;" onclick="showLikes(@post.PostId)">
+                    <i class="fa-solid like fa-thumbs-up"></i>
+                    <span>@post.NumOfLike</span>
+                    <i class="fa-solid dislike fa-thumbs-down ms-2"></i>
+                    <span>@post.NumOfDisLike</span>
+                </label>
+                <span style="float: right;" class="me-3">
+                    <i class=" fa-solid fa-comment comment"></i>@post.NumOfComment
+                </span>
+            </div>
+
+
+            <div class="LikesParentOverlay" id="likes+@post.PostId" style="display: none;">
+                <div class="likeChildOverlay">
+                    @{
+                        <i class="fa-solid fa-xmark likeChildOverlayColse" onclick="closeLikes(@post.PostId)"></i>
+                        <h4>Likes @(post.NumOfLike+post.NumOfDisLike)</h4>
+                        if (post.NumOfDisLike + post.NumOfLike > 0) {
+                            @foreach (var like in (List<PostLike>)Model.PostModel.PostsLikes) {
+                                if (like.PostId == post.PostId) {
+                                    @foreach (var user in (List<User>)@Model.PostModel.Users) {
+                                        if (like.UserId == user.Id) {
+                                            <div class="my-3">
+                                                <a asp-action="GetUser" asp-controller="User" asp-route-id="@user.Id" style="text-decoration:none;">
+                                                    <img class="rounded" height="40px" width="40px" src="@user.ProfileImage" alt="">
+                                                    <span class="mx-2">@user.FirstName @user.SecondName</span>
+                                                    @if (like.LikeStatus) {
+                                                        <i class="fa-solid fa-thumbs-up"></i>
+                                                    } else {
+                                                        <i class="fa-solid dislike fa-thumbs-down ms-2"></i>
+                                                    }
+                                                </a>
+                                            </div>
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            <span class="text-danger text-bold">There are no likes here</span>
+                        }
+                    }
+                </div>
+            </div>
+
+
+
+
+
+
+            @*<!--buttons-->*@
+            <div class="card-footer">
+                @*<!--Create Likes-->*@
+                <form method="post" asp-controller="Posts" asp-action="React">
+                    <input hidden asp-for="@Model.Like.PostId" value="@post.PostId">
+                    <input hidden asp-for="@Model.Like.UserId" value="@Model.CurUser.Id">
+                    @foreach (var item in (List<PostLike>)@Model.PostModel.Likes) {
+                        if (item.PostId == post.PostId) {
+                            <button asp-controller="Posts" asp-action="React" asp-route-likeStatus="true" class="btn btnwidth likeG likes @(item.LikeStatus==true ? "activeLike" : "")" style="float: left;">
+                                <i class="me-2 fa-solid fa-thumbs-up"></i>Like
+                            </button>
+                            <button asp-controller="Posts" asp-action="React" asp-route-likeStatus="fals" class="btn btnwidth dislikeG dislikes @(item.LikeStatus==false ? "activeDislike" : "")" style="float: left;">
+                                <i class="me-2 fa-solid fa-thumbs-down"></i>Dislike
+                            </button>
+                            flag = 1;
+                        }
+                    }
+
+                    @if (flag == 0) {
+                        <button asp-controller="Posts" asp-action="React" asp-route-likeStatus="true" class="btn btnwidth likeG likes " style="float: left;">
+                            <i class="me-2 fa-solid fa-thumbs-up"></i>Like
+                        </button>
+                        <button asp-controller="Posts" asp-action="React" asp-route-likeStatus="fals" class="btn btnwidth dislikeG dislikes" style="float: left;">
+                            <i class="me-2 fa-solid fa-thumbs-down"></i>Dislike
+                        </button>
+                    }
+                </form>
+                <button class="btn btnwidth" onclick="showComments(@post.PostId)"><i class="me-2 comment fa-solid fa-comment"></i>Comment</button>
+            </div>
+            <div class="card-footer" id="comments+@post.PostId" style="display: none;">
+                @*<!--list all comments-->*@
+                @foreach (var comment in (List<PostComment>)@Model.PostModel.Comments) {
+                    if (comment.PostId == post.PostId) {
+                        @foreach (var user in (List<User>)@Model.PostModel.Users) {
+                            @if (comment.UserId == user.Id) {
+                                <div class="py-3 row">
+                                    <div class="col-2">
+                                        <a asp-controller="User" asp-action="GetUser" asp-route-Id="@user.Id" class="me-3"><img width="50px" height="50px" src="@user.ProfileImage" class="profilePic" alt=""></a>
+                                    </div>
+                                    <div class="bgComments col-10">
+                                        <h6>@user.FirstName @user.SecondName</h6>
+                                        <p>@comment.CommentText</p>
+                                    </div>
+                                    <p class="text-muted text-end">@comment.CommentDate</p>
+                                </div>
+                            }
+                        }
+                    }
+                }
+                @*<!--Create Comment-->*@
+                <form method="post" asp-controller="Posts" asp-action="AddComment">
+                    <div>
+                        <input hidden asp-for="@Model.Comment.PostId" value="@post.PostId">
+                        <input hidden asp-for="@Model.Comment.UserId" value="@Model.CurUser.Id">
+                        <div class="input-group mb-3">
+                            <div class="me-3" style="float: left;">
+                                <img width="40px" height="40px" src="@Model.CurUser.ProfileImage" class="profilePic" alt="">
+                            </div>
+                            <input asp-for="@Model.Comment.CommentText" type="text" placeholder="Write a comment"
+                               class="commentInput w-75 form-control" aria-label="Recipient's comment" aria-describedby="@post.PostId">
+                            <button class="btn " type="submit" id="@post.PostId">
+                                <i class="fa-solid fas fa-paper-plane activeLike"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>

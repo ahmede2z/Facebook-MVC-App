@@ -1,0 +1,30 @@
+﻿@model Facebook.Models.ViewModels.UserFriendsViewModel
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 d-flex mb-2">
+            <a asp-controller="User" asp-action="Index" class="btn headBtns  w-50">Posts</a>
+            <a asp-controller="User" asp-action="MyFriends" class="btn headBtns headBtnsFriends ms-3 w-50">Friends</a>
+        </div>
+        <div class="card">
+            <div class="card-title mt-3 ">
+                <h4>Friends</h4>
+            </div>
+            <div class="card-body">
+                <div class="Friends d-flex flex-column">
+                    @foreach (var friend in (List<UserFriend>)@Model.Friends) {
+                        @foreach (var user in (List<User>)@Model.Users) {
+                            if (friend.FriendId == user.Id) {
+                                <a asp-controller="User" asp-action="GetUser" asp-route-id="@user.Id" class="mt-3">
+                                    <img src="@user.ProfileImage" width="60px" height="60px" alt="">
+                                    <span class="ms-2">@user.FirstName @user.SecondName</span>
+                                </a>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
